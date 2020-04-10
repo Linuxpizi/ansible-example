@@ -1,0 +1,23 @@
+---
+
+- name: Copy mysqld_exporter systemd service
+  template:
+    src: mysqld_exporter.service.j2
+    dest: /etc/systemd/system/mysqld_exporter.service
+    mode: 0644
+
+- name: Keep service mysqld_exporter enabled
+  systemd:
+    name: mysqld_exporter
+    enabled: yes
+
+- name: Keep service mysqld_exporter enabled
+  systemd:
+    name: daemon_reload 
+    enabled: yes
+
+- name: Keep service mysqld_exporter started
+  systemd:
+    name: mysqld_exporter
+    state: started
+    daemon_reload: yes

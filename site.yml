@@ -1,0 +1,6 @@
+---
+
+- hosts: mysql_servers
+  roles:
+  - mysql_exporter
+  - pxc_exporter

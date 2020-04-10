@@ -1,0 +1,14 @@
+[Unit]
+Description=MySQL Exporter Service
+Wants=network.target
+After=syslog.target network.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/opt/mysqld_exporter/mysqld_exporter --config.my-cnf=/opt/mysqld_exporter/my.cnf --web.listen-address=0.0.0.0:9105
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
